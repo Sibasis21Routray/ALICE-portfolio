@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Menu, X, ChevronDown, 
@@ -78,6 +78,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsOpen(false);
@@ -94,6 +95,12 @@ export default function Navbar() {
   // Check if a project submenu item is active
   const isProjectActive = () => {
     return location.pathname.startsWith('/projects/');
+  };
+
+  // Handle navigation for mobile menu items
+  const handleMobileNav = (href: string) => {
+    setIsOpen(false);
+    navigate(href);
   };
 
   // Handle project link click - prevent navigation
@@ -167,7 +174,6 @@ export default function Navbar() {
                         : 'text-gray-700 hover:bg-[#0c71c3]/10 hover:text-[#0c71c3]'
                     }`}
                   >
-                    {/* {link.icon && <link.icon className="w-4 h-4" />} */}
                     {link.label}
                     {link.submenu && (
                       <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${
@@ -254,6 +260,30 @@ export default function Navbar() {
                 const isProjectsLink = link.href === '/projects';
                 const isSubmenuOpen = openSubmenu === link.label;
                 
+                // For non-project links, navigate directly
+                if (!isProjectsLink) {
+                  return (
+                    <motion.div
+                      key={link.href}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: i * 0.05 }}
+                    >
+                      <button
+                        onClick={() => handleMobileNav(link.href)}
+                        className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 ${
+                          isActive
+                            ? 'bg-[#0c71c3] text-white shadow-md shadow-[#0c71c3]/25'
+                            : 'text-gray-700 hover:bg-[#0c71c3]/10 hover:text-[#0c71c3]'
+                        }`}
+                      >
+                        {link.label}
+                      </button>
+                    </motion.div>
+                  );
+                }
+
+                // Projects link with submenu
                 return (
                   <motion.div
                     key={link.href}
@@ -263,26 +293,17 @@ export default function Navbar() {
                     className="space-y-0.5"
                   >
                     <button
-                      onClick={() => {
-                        if (isProjectsLink) {
-                          setOpenSubmenu(isSubmenuOpen ? null : link.label);
-                        } else {
-                          window.location.href = link.href;
-                        }
-                      }}
+                      onClick={() => setOpenSubmenu(isSubmenuOpen ? null : link.label)}
                       className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 ${
-                        isActive
+                        isActive || isProjectActive()
                           ? 'bg-[#0c71c3] text-white shadow-md shadow-[#0c71c3]/25'
                           : 'text-gray-700 hover:bg-[#0c71c3]/10 hover:text-[#0c71c3]'
                       }`}
                     >
-                      {/* {link.icon && <link.icon className="w-4 h-4" />} */}
                       {link.label}
-                      {link.submenu && (
-                        <ChevronDown className={`w-3.5 h-3.5 ml-auto transition-transform duration-200 ${
-                          isSubmenuOpen ? 'rotate-180' : ''
-                        } ${isActive ? 'text-white' : 'text-gray-400'}`} />
-                      )}
+                      <ChevronDown className={`w-3.5 h-3.5 ml-auto transition-transform duration-200 ${
+                        isSubmenuOpen ? 'rotate-180' : ''
+                      } ${isActive || isProjectActive() ? 'text-white' : 'text-gray-400'}`} />
                     </button>
                     
                     {/* Mobile Submenu */}

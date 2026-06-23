@@ -1,7 +1,8 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Leaf, Linkedin, Mail, ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { siteConfig } from '../lib/config';
+import { useEffect } from 'react';
 
 const footerLinks = {
   navigation: [
@@ -28,33 +29,39 @@ const footerLinks = {
 
 export default function Footer() {
   const location = useLocation();
+  const navigate = useNavigate();
 
-  // Smooth scroll to section when clicking anchor links
-  const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  // Handle hash navigation after page loads
+  useEffect(() => {
+    if (location.hash) {
+      const targetId = location.hash.replace('#', '');
+      const element = document.getElementById(targetId);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 300);
+      }
+    }
+  }, [location]);
+
+  // Handle navigation for anchor links
+  const handleAnchorNavigation = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     
-    // If we're not on the about page, navigate to it first
-    if (location.pathname !== '/about') {
-      const targetId = href.split('#')[1];
-      // Navigate to about page with the hash
-      window.location.href = href;
-      return;
-    }
-
-    // If we're already on the about page, scroll to the section
-    const targetId = href.split('#')[1];
-    const element = document.getElementById(targetId);
-    if (element) {
-      // Add a small delay to ensure the page is fully rendered
-      setTimeout(() => {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }, 100);
-    }
-  };
-
-  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href.includes('#')) {
-      handleAnchorClick(e, href);
+      const [path, hash] = href.split('#');
+      
+      // If we're already on the about page, just scroll to the section
+      if (location.pathname === '/about') {
+        const element = document.getElementById(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+        return;
+      }
+      
+      // Navigate to the about page with the hash
+      navigate(`/about#${hash}`);
     }
   };
 
@@ -75,7 +82,7 @@ export default function Footer() {
             </p>
             <div className="flex items-center gap-3">
               <a
-                href={siteConfig?.social?.linkedin || '#'}
+                // href={siteConfig?.social?.linkedin || '#'}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-lg bg-white/10 hover:bg-[#0c71c3] flex items-center justify-center transition-colors"
@@ -83,7 +90,7 @@ export default function Footer() {
                 <Linkedin className="w-5 h-5 text-gray-400 hover:text-white" />
               </a>
               <a
-                href={`mailto:${siteConfig?.email || ''}`}
+                // href={`mailto:${siteConfig?.email || ''}`}
                 className="w-10 h-10 rounded-lg bg-white/10 hover:bg-[#0c71c3] flex items-center justify-center transition-colors"
               >
                 <Mail className="w-5 h-5 text-gray-400 hover:text-white" />
@@ -102,7 +109,7 @@ export default function Footer() {
                   {link.href.includes('#') ? (
                     <a
                       href={link.href}
-                      onClick={(e) => handleAnchorClick(e, link.href)}
+                      onClick={(e) => handleAnchorNavigation(e, link.href)}
                       className="text-gray-400 hover:text-white text-sm transition-colors flex items-center gap-1 group cursor-pointer"
                     >
                       {link.label}
