@@ -67,7 +67,7 @@ export default function Contact() {
                   <div>
                     <h4 className="font-semibold text-gray-900">Email</h4>
                     <a
-                      href={`mailto:${siteConfig.email}`}
+                      // href={`mailto:${siteConfig.email}`}
                       className="text-[#0c71c3] hover:text-[#0a5fa3] transition-colors"
                     >
                       {siteConfig.email}
@@ -82,7 +82,7 @@ export default function Contact() {
                   <div>
                     <h4 className="font-semibold text-gray-900">LinkedIn</h4>
                     <a
-                      href={siteConfig.social.linkedin}
+                      // href={siteConfig.social.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-[#0c71c3] hover:text-[#0a5fa3] transition-colors"
