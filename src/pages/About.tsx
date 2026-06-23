@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 
 export default function About() {
   return (
-    <div className=''>
+    <div className='overflow-hidden'>
       {/* Page Header */}
       <PageBanner
         title="About Me"
