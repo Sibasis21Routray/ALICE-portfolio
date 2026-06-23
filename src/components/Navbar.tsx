@@ -139,12 +139,12 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 group">
+          <Link to="/" className="flex items-center gap-2 group flex-shrink-0">
             <div className="relative">
               <img
                 src="https://aliceclaraaugustine.com/wp-content/uploads/2023/08/aca-new-logo.png"
                 alt="Happy Food Logo"
-                className="w-44 h-17 rounded-lg object-cover py-3"
+                className="w-36 sm:w-44 h-auto rounded-lg object-cover py-3"
               />
             </div>
           </Link>
@@ -168,7 +168,7 @@ export default function Navbar() {
                   <Link
                     to={isProjectsLink ? '#' : link.href}
                     onClick={isProjectsLink ? handleProjectClick : undefined}
-                    className={`flex items-center gap-1.5 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${
+                    className={`flex items-center gap-1.5 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 whitespace-nowrap ${
                       isActive
                         ? 'bg-[#0c71c3] text-white shadow-md shadow-[#0c71c3]/25'
                         : 'text-gray-700 hover:bg-[#0c71c3]/10 hover:text-[#0c71c3]'
@@ -235,7 +235,7 @@ export default function Navbar() {
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 rounded-lg text-gray-700 hover:bg-[#0c71c3]/10 hover:text-[#0c71c3] transition-colors"
+            className="lg:hidden p-2 rounded-lg text-gray-700 hover:bg-[#0c71c3]/10 hover:text-[#0c71c3] transition-colors flex-shrink-0"
             aria-label="Toggle menu"
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -301,14 +301,14 @@ export default function Navbar() {
                       }`}
                     >
                       {link.label}
-                      <ChevronDown className={`w-3.5 h-3.5 ml-auto transition-transform duration-200 ${
+                      <ChevronDown className={`w-3.5 h-3.5 ml-auto transition-transform duration-200 flex-shrink-0 ${
                         isSubmenuOpen ? 'rotate-180' : ''
                       } ${isActive || isProjectActive() ? 'text-white' : 'text-gray-400'}`} />
                     </button>
                     
                     {/* Mobile Submenu */}
                     {link.submenu && isSubmenuOpen && (
-                      <div className="pl-6 space-y-0.5">
+                      <div className="pl-4 sm:pl-6 space-y-0.5">
                         {link.submenu.map(subItem => {
                           const IconComponent = subItem.icon;
                           return (
@@ -329,10 +329,10 @@ export default function Navbar() {
                               }`}>
                                 <IconComponent className="w-4 h-4" />
                               </div>
-                              <div>
-                                <div className="font-medium">{subItem.label}</div>
+                              <div className="min-w-0 flex-1">
+                                <div className="font-medium break-words">{subItem.label}</div>
                                 {subItem.description && (
-                                  <div className="text-xs text-gray-400">{subItem.description}</div>
+                                  <div className="text-xs text-gray-400 break-words">{subItem.description}</div>
                                 )}
                               </div>
                             </Link>
