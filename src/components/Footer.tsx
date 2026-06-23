@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Leaf, Linkedin, Mail, ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { siteConfig } from '../lib/config';
@@ -27,15 +27,34 @@ const footerLinks = {
 };
 
 export default function Footer() {
+  const location = useLocation();
+
   // Smooth scroll to section when clicking anchor links
   const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (href.includes('#')) {
-      e.preventDefault();
+    e.preventDefault();
+    
+    // If we're not on the about page, navigate to it first
+    if (location.pathname !== '/about') {
       const targetId = href.split('#')[1];
-      const element = document.getElementById(targetId);
-      if (element) {
+      // Navigate to about page with the hash
+      window.location.href = href;
+      return;
+    }
+
+    // If we're already on the about page, scroll to the section
+    const targetId = href.split('#')[1];
+    const element = document.getElementById(targetId);
+    if (element) {
+      // Add a small delay to ensure the page is fully rendered
+      setTimeout(() => {
         element.scrollIntoView({ behavior: 'smooth' });
-      }
+      }, 100);
+    }
+  };
+
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.includes('#')) {
+      handleAnchorClick(e, href);
     }
   };
 
@@ -56,7 +75,7 @@ export default function Footer() {
             </p>
             <div className="flex items-center gap-3">
               <a
-                // href={siteConfig?.social?.linkedin || '#'}
+                href={siteConfig?.social?.linkedin || '#'}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-lg bg-white/10 hover:bg-[#0c71c3] flex items-center justify-center transition-colors"
@@ -64,7 +83,7 @@ export default function Footer() {
                 <Linkedin className="w-5 h-5 text-gray-400 hover:text-white" />
               </a>
               <a
-                // href={`mailto:${siteConfig?.email || ''}`}
+                href={`mailto:${siteConfig?.email || ''}`}
                 className="w-10 h-10 rounded-lg bg-white/10 hover:bg-[#0c71c3] flex items-center justify-center transition-colors"
               >
                 <Mail className="w-5 h-5 text-gray-400 hover:text-white" />
@@ -160,7 +179,6 @@ export default function Footer() {
           <p className="text-gray-500 text-sm">
             © {new Date().getFullYear()} Alice Clara Augustine. All rights reserved.
           </p>
-          
         </div>
       </div>
     </footer>
