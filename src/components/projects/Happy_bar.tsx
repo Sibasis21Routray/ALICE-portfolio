@@ -88,7 +88,7 @@ const productPrinciples = [
 
 export default function HappyBar() {
   return (
-    <div className="bg-white text-gray-900 min-h-screen">
+    <div className="bg-white text-gray-900 min-h-screen overflow-hidden">
       {/* Page Banner */}
       <PageBanner
         title="Happy Bar Non-Profit & Product Development"

@@ -81,7 +81,7 @@ const keyFeatures = [
 
 export default function Logistics() {
   return (
-    <div className="bg-white text-gray-900 min-h-screen">
+    <div className="bg-white text-gray-900 min-h-screen overflow-hidden">
       {/* Page Banner */}
       <PageBanner
         title="Logistics Intelligence Platform"

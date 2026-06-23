@@ -92,7 +92,7 @@ const capabilities = [
 
 export default function ResearchData() {
   return (
-    <div className="bg-white text-gray-900 min-h-screen">
+    <div className="bg-white text-gray-900 min-h-screen overflow-hidden">
       {/* Page Banner */}
       <PageBanner
         title="Research Data Integration Platform"
