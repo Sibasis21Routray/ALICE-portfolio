@@ -101,7 +101,7 @@ export default function Logistics() {
             className="mb-12"
           >
             <img
-              src="/projects/logi-pic.png"
+              src="/projects/logi-intel.png"
               alt="Logistics Intelligence Platform Architecture"
               className="rounded-2xl shadow-xl w-full h-auto border border-gray-200"
             />
@@ -116,7 +116,9 @@ export default function Logistics() {
               viewport={{ once: true }}
             >
               <div className="flex items-center gap-3 mb-4">
-                <span className="text-[#0c71c3] font-semibold text-sm uppercase tracking-wider">Project</span>
+                <span className="text-[#0c71c3] font-semibold text-sm uppercase tracking-wider">
+                  Project
+                </span>
                 <span className="text-gray-300">|</span>
                 <span className="text-gray-500 text-sm">2019</span>
               </div>
@@ -124,7 +126,8 @@ export default function Logistics() {
                 Amgen Inc
               </h2>
               <p className="text-gray-600 text-lg leading-relaxed mb-6">
-                Built a semantics driven data engine for logistics visibility and optimization
+                Built a semantics driven data engine for logistics visibility
+                and optimization
               </p>
               <div className="flex flex-wrap gap-3">
                 <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#0c71c3]/10 text-[#0c71c3] text-sm font-medium rounded-full">
@@ -149,7 +152,9 @@ export default function Logistics() {
               viewport={{ once: true }}
               className="bg-gray-50 rounded-2xl p-6 border border-gray-200"
             >
-              <h3 className="text-lg font-bold text-gray-900 mb-3">Platform Overview</h3>
+              <h3 className="text-lg font-bold text-gray-900 mb-3">
+                Platform Overview
+              </h3>
               <ul className="space-y-2">
                 <li className="flex items-start gap-3 text-sm text-gray-600">
                   <CheckCircle className="w-4 h-4 text-[#0c71c3] flex-shrink-0 mt-0.5" />
@@ -161,15 +166,31 @@ export default function Logistics() {
                 </li>
                 <li className="flex items-start gap-3 text-sm text-gray-600">
                   <CheckCircle className="w-4 h-4 text-[#0c71c3] flex-shrink-0 mt-0.5" />
-                  Visibility of data allows optimization of shipper and Transport Service Provider selection
+                  Visibility of data allows optimization of shipper and
+                  Transport Service Provider selection
                 </li>
                 <li className="flex items-start gap-3 text-sm text-gray-600">
                   <CheckCircle className="w-4 h-4 text-[#0c71c3] flex-shrink-0 mt-0.5" />
-                  Groundwork done on the logistics knowledge graph/ontology/taxonomy enables AI and ML
+                  Groundwork done on the logistics knowledge
+                  graph/ontology/taxonomy enables AI and ML
                 </li>
               </ul>
             </motion.div>
           </div>
+          {/* Large Image - Full Width */}
+          <motion.div
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="mb-12 mt-12"
+          >
+            <img
+              src="/projects/logi-pic.png"
+              alt="Logistics Intelligence Platform Architecture"
+              className="rounded-2xl shadow-xl w-full h-auto border border-gray-200"
+            />
+          </motion.div>
         </div>
       </section>
 
@@ -185,13 +206,16 @@ export default function Logistics() {
             <motion.div variants={fadeInUp} className="text-center mb-12">
               <div className="flex items-center justify-center gap-3 mb-3">
                 <Truck className="w-8 h-8 text-[#0c71c3]" />
-                <span className="text-[#0c71c3] font-semibold text-sm uppercase tracking-wider">Platform Features</span>
+                <span className="text-[#0c71c3] font-semibold text-sm uppercase tracking-wider">
+                  Platform Features
+                </span>
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
                 Key Capabilities
               </h2>
               <p className="text-gray-500 mt-2 max-w-2xl mx-auto">
-                A comprehensive logistics intelligence platform for supply chain optimization
+                A comprehensive logistics intelligence platform for supply chain
+                optimization
               </p>
             </motion.div>
 
@@ -204,7 +228,9 @@ export default function Logistics() {
                 >
                   <div className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-[#0c71c3] flex-shrink-0 mt-0.5" />
-                    <p className="text-sm text-gray-700 leading-relaxed">{feature}</p>
+                    <p className="text-sm text-gray-700 leading-relaxed">
+                      {feature}
+                    </p>
                   </div>
                 </motion.div>
               ))}
@@ -225,7 +251,9 @@ export default function Logistics() {
             <motion.div variants={fadeInUp} className="text-center mb-8">
               <div className="flex items-center justify-center gap-3 mb-3">
                 <Award className="w-8 h-8 text-[#f57507]" />
-                <span className="text-[#0c71c3] font-semibold text-sm uppercase tracking-wider">Role</span>
+                <span className="text-[#0c71c3] font-semibold text-sm uppercase tracking-wider">
+                  Role
+                </span>
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
                 Key Contribution
@@ -237,16 +265,23 @@ export default function Logistics() {
               className="bg-gray-50 rounded-2xl p-8 border border-gray-200"
             >
               <p className="text-gray-700 leading-relaxed mb-4">
-                Was responsible for delivery of the Platform, played a key role, defining requirements, 
-                story writing, sprint planning, Semantic data modeling, data review and preparation, 
-                front end design and testing.
+                Was responsible for delivery of the Platform, played a key role,
+                defining requirements, story writing, sprint planning, Semantic
+                data modeling, data review and preparation, front end design and
+                testing.
               </p>
               <p className="text-gray-700 leading-relaxed">
-                As a core team member, I often interacted with VPs, EDs and Directors of Global Quality 
-                Organization to gather requirement and do product demo.
+                As a core team member, I often interacted with VPs, EDs and
+                Directors of Global Quality Organization to gather requirement
+                and do product demo.
               </p>
               <div className="mt-6 text-right">
-                <button className="inline-flex items-center gap-2 text-[#0c71c3] hover:text-[#0a5fa3] font-medium transition-colors group">
+                <button
+                  onClick={() =>
+                    window.open("/projects/mlw19-amgen-semantic-technology-assisted-data-harmonizing.pdf", "_blank")
+                  }
+                  className="inline-flex items-center gap-2 text-[#0c71c3] hover:text-[#0a5fa3] font-medium transition-colors group"
+                >
                   Click for more information
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
@@ -255,8 +290,6 @@ export default function Logistics() {
           </motion.div>
         </div>
       </section>
-
-     
     </div>
   );
 }

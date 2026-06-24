@@ -17,6 +17,7 @@ import Device_tech from './components/projects/Device_tech';
 import Research_data from './components/projects/Research_data';
 import ScrollToTop from './components/ScrollToTop';
 import NotFound from './pages/NotFound';
+import Happybar_subpage from './components/projects/Happybar_subpage';
 
 function App() {
   
@@ -31,6 +32,7 @@ function App() {
           
           {/* <Route path="/projects" element={<Projects />} /> */}
           <Route path="/projects/happy-bar" element={<HappyBar />} />
+          <Route path="/projects/happybar" element={<Happybar_subpage />} />
           <Route path="/projects/semantic-layer" element={<Semantic_layer />} />
           <Route path="/projects/logistics" element={<Logistics />} />
           <Route path="/projects/knowledge-sharing" element={<Knowledge_sharing />} />

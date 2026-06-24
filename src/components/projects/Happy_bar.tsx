@@ -101,7 +101,7 @@ export default function HappyBar() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <motion.div
-              variants ={fadeInLeft}
+              variants={fadeInLeft}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
@@ -113,12 +113,15 @@ export default function HappyBar() {
                   <div className="w-16 h-16 rounded-full bg-[#0c71c3]/10 flex items-center justify-center mb-4">
                     <Heart className="w-8 h-8 text-[#0c71c3]" />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Our Mission</h3>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                    Our Mission
+                  </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    Happy Bar Nutrition promotes health for the mind, body and spirit. 
-                    Short term we provide nutritional snacks to needy populations especially 
-                    children, the sick, and the aged. Long term we promote nutritional 
-                    awareness and solutions to self-sustainability of food.
+                    Happy Bar Nutrition promotes health for the mind, body and
+                    spirit. Short term we provide nutritional snacks to needy
+                    populations especially children, the sick, and the aged.
+                    Long term we promote nutritional awareness and solutions to
+                    self-sustainability of food.
                   </p>
                 </div>
               </div>
@@ -170,10 +173,13 @@ export default function HappyBar() {
                   <div className="w-16 h-16 rounded-full bg-[#f57507]/10 flex items-center justify-center mb-4">
                     <Target className="w-8 h-8 text-[#f57507]" />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Our Vision</h3>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                    Our Vision
+                  </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    Nutrition for All – A world of communities with no undernourished people. 
-                    We produce tasty, healthy snack bars for impoverished children.
+                    Nutrition for All – A world of communities with no
+                    undernourished people. We produce tasty, healthy snack bars
+                    for impoverished children.
                   </p>
                 </div>
               </div>
@@ -184,7 +190,7 @@ export default function HappyBar() {
 
       {/* Section 3: Product Management Principles - Full Width */}
       <section className="py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8  " >
           <motion.div
             variants={staggerContainer}
             initial="hidden"
@@ -194,7 +200,9 @@ export default function HappyBar() {
             <motion.div variants={fadeInUp} className="text-center mb-12">
               <div className="flex items-center justify-center gap-3 mb-3">
                 <Lightbulb className="w-8 h-8 text-[#f57507]" />
-                <span className="text-[#0c71c3] font-semibold text-sm uppercase tracking-wider">Process</span>
+                <span className="text-[#0c71c3] font-semibold text-sm uppercase tracking-wider">
+                  Process
+                </span>
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
                 Product Management Principles Used
@@ -212,15 +220,27 @@ export default function HappyBar() {
                   className="flex items-center gap-3 p-4 bg-gray-50 rounded-xl border border-gray-100 hover:border-[#0c71c3]/30 hover:shadow-md transition-all duration-300"
                 >
                   <CheckCircle className="w-5 h-5 text-[#0c71c3] flex-shrink-0" />
-                  <span className="text-sm font-medium text-gray-700">{principle}</span>
+                  <span className="text-sm font-medium text-gray-700">
+                    {principle}
+                  </span>
                 </motion.div>
               ))}
+
+              
             </div>
+            <div className='items-center flex justify-center mt-10'>
+               <Link
+                to="/projects/happybar"
+                className="inline-flex items-center px-6 py-3 bg-[#0c71c3] text-white rounded-full font-semibold hover:bg-[#0a5fa3] hover:-translate-y-0.5 transition-all duration-300 shadow-lg"
+              >
+                Click for more information
+              </Link>
+
+            </div>
+           
           </motion.div>
         </div>
       </section>
-
-      
     </div>
   );
 }

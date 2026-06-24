@@ -244,9 +244,7 @@ export default function DeviceTech() {
                 className="bg-red-50 rounded-2xl p-8 border border-red-200"
               >
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center">
-                    <span className="text-red-600 text-xl font-bold">!</span>
-                  </div>
+                  
                   <h3 className="text-xl font-bold text-red-700">Challenge</h3>
                 </div>
                 <ul className="space-y-3">
@@ -264,9 +262,7 @@ export default function DeviceTech() {
                 className="bg-green-50 rounded-2xl p-8 border border-green-200"
               >
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
-                    <CheckCircle className="w-6 h-6 text-green-600" />
-                  </div>
+                  
                   <h3 className="text-xl font-bold text-green-700">Solution</h3>
                 </div>
                 <ul className="space-y-3">
