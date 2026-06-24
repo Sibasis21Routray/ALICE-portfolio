@@ -134,7 +134,7 @@ export default function SemanticLayer() {
       <PageBanner
         title="Semantic Layer"
         description="Driving Digital Transformation using Semantics and Knowledge Graphs"
-        backgroundImage="https://t3.ftcdn.net/jpg/02/64/30/32/360_F_264303251_zEuPW8uTjTTY2wogztkQHxekcLRUdvXT.jpg"
+        backgroundImage="/bg.jpg"
       />
 
       {/* Overview Section with Large Image */}
@@ -149,7 +149,7 @@ export default function SemanticLayer() {
             className="mb-12"
           >
             <img
-              src="https://aliceclaraaugustine.com/wp-content/uploads/2023/08/sem-pic.png"
+              src="/projects/sem-pic.png"
               alt="Semantic Layer Architecture"
               className="rounded-2xl shadow-xl w-full h-auto border border-gray-200"
             />

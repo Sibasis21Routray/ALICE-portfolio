@@ -1,3 +1,17 @@
+import {
+  ArrowLeft,
+  ArrowRight,
+  Award,
+  Trophy,
+  Star,
+  Zap,
+  Medal,
+  Sparkles,
+  CheckCircle,
+} from "lucide-react";
+
+
+
 export const experience = [
   {
     id: 'gsk',
@@ -62,73 +76,122 @@ export const experience = [
   },
 ];
 
-export const projects = [
-  {
-    id: 'happy-bar',
-    title: 'Happy Bar Non-Profit & Product Development',
-    icon: 'Heart',
-    description: 'A non-profit initiative focused on product development for social good.',
-    image: 'https://images.pexels.com/photos/6590920/pexels-photo-6590920.jpeg?auto=compress&cs=tinysrgb&w=800',
-  },
-  {
-    id: 'semantic-layer',
-    title: 'Semantic Layer',
-    icon: 'Layers',
-    description: 'Enterprise semantic layer for unified data representation and knowledge management.',
-    image: 'https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=800',
-  },
-  {
-    id: 'logistics',
-    title: 'Logistics Intelligence Platform',
-    icon: 'Truck',
-    description: 'AI-powered logistics platform for supply chain optimization.',
-    image: 'https://images.pexels.com/photos/6169668/pexels-photo-6169668.jpeg?auto=compress&cs=tinysrgb&w=800',
-  },
-  {
-    id: 'knowledge-sharing',
-    title: 'Knowledge Sharing Platform',
-    icon: 'MessageSquare',
-    description: 'Collaborative knowledge sharing platform for enterprise teams.',
-    image: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800',
-  },
-  {
-    id: 'device-tech',
-    title: 'Advanced Device Technology',
-    icon: 'Cpu',
-    description: 'Cutting-edge device technology for pharmaceutical applications.',
-    image: 'https://images.pexels.com/photos/2280571/pexels-photo-2280571.jpeg?auto=compress&cs=tinysrgb&w=800',
-  },
-  {
-    id: 'research-data',
-    title: 'Research Data Integration Platform',
-    icon: 'Database',
-    description: 'Unified research data platform for integration and analysis.',
-    image: 'https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg?auto=compress&cs=tinysrgb&w=800',
-  },
-];
+// export const projects = [
+//   {
+//     id: 'happy-bar',
+//     title: 'Happy Bar Non-Profit & Product Development',
+//     icon: 'Heart',
+//     description: 'A non-profit initiative focused on product development for social good.',
+//     image: 'https://images.pexels.com/photos/6590920/pexels-photo-6590920.jpeg?auto=compress&cs=tinysrgb&w=800',
+//   },
+//   {
+//     id: 'semantic-layer',
+//     title: 'Semantic Layer',
+//     icon: 'Layers',
+//     description: 'Enterprise semantic layer for unified data representation and knowledge management.',
+//     image: 'https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=800',
+//   },
+//   {
+//     id: 'logistics',
+//     title: 'Logistics Intelligence Platform',
+//     icon: 'Truck',
+//     description: 'AI-powered logistics platform for supply chain optimization.',
+//     image: 'https://images.pexels.com/photos/6169668/pexels-photo-6169668.jpeg?auto=compress&cs=tinysrgb&w=800',
+//   },
+//   {
+//     id: 'knowledge-sharing',
+//     title: 'Knowledge Sharing Platform',
+//     icon: 'MessageSquare',
+//     description: 'Collaborative knowledge sharing platform for enterprise teams.',
+//     image: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800',
+//   },
+//   {
+//     id: 'device-tech',
+//     title: 'Advanced Device Technology',
+//     icon: 'Cpu',
+//     description: 'Cutting-edge device technology for pharmaceutical applications.',
+//     image: 'https://images.pexels.com/photos/2280571/pexels-photo-2280571.jpeg?auto=compress&cs=tinysrgb&w=800',
+//   },
+//   {
+//     id: 'research-data',
+//     title: 'Research Data Integration Platform',
+//     icon: 'Database',
+//     description: 'Unified research data platform for integration and analysis.',
+//     image: 'https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg?auto=compress&cs=tinysrgb&w=800',
+//   },
+// ];
 
-export const education = [
+
+
+export const educationData= [
   {
-    id: 'phd',
-    degree: 'Ph.D. in Biotechnology',
-    institution: 'University of Research',
-    period: '1994 – 1999',
-    focus: 'Genomics & Systems Biology',
+    id: 1,
+    institution: 'UCLA Extension',
+    logo: '/education/ucla.png',
+    subtitle: 'IN COLLABORATION WITH EDX',
+    program: 'The Product Management Boot Camp at UCLA',
+    period: 'April 2023 – August 2023',
+    description: [
+      "The most recent bootcamp study I did on Product management has given me a formal education on the product's lifecycle: from development, to positioning and pricing, by focusing on the product and its customers first and foremost.",
+      'I have gained crucial product management skills like market analysis, ideation, value proposition creation, prioritization, roadmap development, rapid prototyping using Figjam, data analysis using SQL, and data visualization using Tableau.'
+    ]
   },
   {
-    id: 'masters',
-    degree: 'M.S. in Molecular Biology',
-    institution: 'National Institute of Science',
-    period: '1992 – 1994',
-    focus: 'Plant Molecular Biology',
+    id: 2,
+    institution: 'USF Health',
+    logo: '/education/usf-jpeg.webp',
+    subtitle: 'MORSANI COLLEGE OF MEDICINE',
+    program: 'Masters in Healthcare Informatics',
+    period: '2020 – 2021',
+    description: [
+      'The masters course in Healthcare analytics focused on the management and use of healthcare data. It included study of the design, development, adoption and application of information technology-based innovations in healthcare services delivery, management, and planning.',
+      'I had hands-on training to develop skills around data dashboards, data mining, Predictive analytics, data preparation, data visualization, descriptive statistics, healthcare data, predictive analytics, SAS Studio, SAS Visual Analytics and SAS Viya.'
+    ]
   },
   {
-    id: 'bachelors',
-    degree: 'B.S. in Biotechnology',
-    institution: 'University of Science',
-    period: '1988 – 1992',
-    focus: 'Biotechnology & Genetics',
+    id: 3,
+    institution: 'MIT',
+    logo: '/education/mit-mgmt.png',
+    subtitle: 'MANAGEMENT EXECUTIVE EDUCATION',
+    program: 'Design Thinking - Innovation of Products and Services',
+    period: 'Feb 2018 – April 2018',
+    description: [
+      "Innovation of Products and Services: MIT's Approach to Design Thinking"
+    ],
+    highlights: [
+      'Customer Insights',
+      'Interviewing Techniques',
+      'Brainstorming Techniques',
+      'Human-Centered Design',
+      'Ideation Techniques',
+      'Rapid Prototyping'
+    ]
   },
+  {
+    id: 4,
+    institution: 'St. Aloysius College',
+    logo: '/education/st-aloysius-1.png',
+    subtitle: 'DOCTORATE STUDIES IN BIO-SCIENCES',
+    program: 'Ph.D. in Bio-Sciences',
+    period: '1992 – 1998',
+    description: [
+      'Ph.D. studies included Laboratory related techniques such as Plant tissue culture, genetic transformation, synthetic seed production, cryopreservation of somatic embryos, microphotography, micro-techniques and staining methods, experimental design, documentation, statistical analysis and report generation.',
+      'I presented at several conferences, domestic and international and met students and teachers in Jerusalem and across Europe.'
+    ]
+  },
+  {
+    id: 5,
+    institution: 'St. Joseph\'s College',
+    logo: '/education/St.Josephs-logo.png',
+    subtitle: 'DEPARTMENT OF BOTANY',
+    program: 'Masters in Botany (Specialization in Microbiology)',
+    period: '1990 – 1992',
+    description: [
+      'Masters studies included laboratory related techniques such as microphotography, micro-techniques and staining methods, experimental design, documentation, statistical analysis and report generation.',
+      'Courses involved various areas of research like Advanced Plant Physiology, Plant Tissue Culture, Plant Systematics and Microbiology.',
+      'I was encouraged to take up various research topics of my interest and present my work in National conferences.'
+    ]
+  }
 ];
 
 export const skills = [
@@ -141,58 +204,207 @@ export const skills = [
 export const testimonials = [
   {
     id: '1',
-    name: 'Dr. Sarah Chen',
-    role: 'VP of R&D, Biotech Corp',
-    text: 'Alice\'s expertise in semantic technology and ontology design has been transformative for our data integration efforts. Her vision is unparalleled.',
-    image: 'https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=200',
+    name: 'Jeff Schacherl',
+    role: 'Director of Kite Experience ',
+    company:"Kite Pharma",
+    text: 'It has been a pleasure working with Clare over the last several months on development of a custom internal knowledge management application. Her expertise in creating sophisticated but elegant ontology models has been a huge asset to my team, and enabled us to progress through several significant project milestones. Clare has a terrific personality and work ethic, and is energetic in applying her skills to new areas and delivering results. Remarkable and produces results.',
+    image: '/testomonials/profile-picture.webp',
   },
   {
     id: '2',
-    name: 'Michael Roberts',
-    role: 'Chief Data Officer, Pharma Inc',
-    text: 'Working with Alice on the Reference Data Platform was a game-changer. Her strategic approach to semantics and data architecture is exceptional.',
-    image: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=200',
+    name: 'William Gleason',
+    role: 'Director of Sales',
+    company:"Zycus",
+    text: 'Alice is the example of a professional and an asset to any project. She understands systems and solutions and rests comfortably between corporate directives and department pain points. She works within her budget and inspires people and resources to perform at a high and productive level. Alice’s approach to data analysis can be described as fervent. Her intensity and enthusiasm toward understanding a puzzle within a data structure is remarkable and produces results.',
+    image: '/testomonials/profile-picture.webp',
   },
   {
     id: '3',
-    name: 'Dr. Priya Sharma',
-    role: 'Director, Agricultural Research',
-    text: 'Alice\'s work in genomics and data mining at Monsanto laid the foundation for breakthroughs in corn yield improvement. A brilliant scientist.',
-    image: 'https://images.pexels.com/photos/1181695/pexels-photo-1181695.jpeg?auto=compress&cs=tinysrgb&w=200',
+    name: 'Alan Flett',
+    role: 'Senior Product Manager',
+    company:"Progress",
+    text: 'Clare is indeed an awesome smarty pants in all things related to knowledge and information intelligence, and understands semantic modeling and its use in classification and semantic interoperability, especially in relation to life sciences and bio-sciences.',
+    image: '/testomonials/profile-picture.webp',
   },
   {
     id: '4',
-    name: 'James Wilson',
-    role: 'CEO, Knowledge Systems',
-    text: 'Alice brings a unique combination of deep technical expertise and strategic product vision. Her contributions to semantic technology are invaluable.',
-    image: 'https://images.pexels.com/photos/3760263/pexels-photo-3760263.jpeg?auto=compress&cs=tinysrgb&w=200',
+    name: 'Milton Stokes',
+    role: 'Communication | Public Affairs | Stakeholder Engagement ~ Advancing Global Health and Nutrition',
+    company:"",
+    text: 'I’ve known Clare since shortly after I started at Monsanto. Everyone said, “You must meet her!” Why? Because in addition to her work for the company, Clare is deeply committed to food and nutrition security on a global scale. Specifically, she (with collaborators) launched a project called the Happy Bar to correct nutritional deficiencies in populations impacted by ostracism. Working with whole food ingredients that are culturally appropriate, Clare designed a food bar that helps communities with HIV/AIDS and leprosy by providing them vital calories, protein, and micronutrients. She demonstrates passion for those in need. I’m proud to know her!',
+    image: '/testomonials/profile-picture.webp',
+  },
+  {
+    id: '5',
+    name: 'Anand Kumar Padmanaban (AP)',
+    role: 'Professor of Practice Independent Director | Certified Manager (Lic. # 12058) | Author Advisory Committee CORD IISc',
+    company:"Witmer Health",
+    text: 'Alice is a researcher’s delight, she brings infectious energy, agility, high quality smarts to the projects she works on. She has often been Ms.Dependable for all critical projects we used to work on and consistently delivered above and beyond outcomes. I would heartily recommend Clare for any organizations who are considering her candidature.',
+    image: '/testomonials/profile-picture.webp',
+  },
+  {
+    id: '6',
+    name: 'Dipendra Jyoti',
+    role: 'Director',
+    company:"Salesforce (Pub Sec Health)",
+    text: 'Clare is a natural ontologist, who understands the right mix of business terms across the various unit of an organization. She inspires others in bringing the best quality insight with real world predicates. She also brings cheers in life of needful people with her charity organization. I wish her good luck for all the future endeavors.',
+    image: '/testomonials/profile-picture.webp',
+  },
+  {
+    id: '7',
+    name: 'Shreya D Souza',
+    role: 'Incoming Stanford MSCS Student | Brown University CS 21',
+    company:"",
+    text: 'I interned at Amgen for 12 weeks, during which Clare was my manager for a Proteogenomics Data Visualisation project. Although I was working in unusual virtual circumstances, Clare made me feel welcomed into the company and ensured that I gleaned the most from my experience by being readily available. Her managerial expertise was apparent in daily Scrum calls, in which she effectively delegated work and made sure everyone was on track to achieve their goals for the Sprint. Whenever I was unsure about any aspect of the project, big or small, she patiently discussed everything in detail to make sure I had a firm grasp on everything I was doing.',
+    image: '/testomonials/profile-picture.webp',
+  },
+  {
+    id: '8',
+    name: 'Nick Haycocks',
+    role: 'Senior Specialist QA',
+    company:"Amgen Inc",
+    text: 'I’ve been fortunate to have met Alice 4 years ago – she introduced me to semantic technology and NLP and how it can be used. Very quickly we identified a project that used this technology to join data from multiple systems allowing oversight of processes and performance. Using this platform we gained insight into the supply chain process and are able to do analytics. That project led to another that allowed visualization of links from regulations/regulatory guidance to internal documents. It’s a pleasure working with Alice – she has an understanding of the capabilities of technology and an enthusiastic goal focused attitude to see how the technology can be used to improve the way we work, and work to develop and implement the solution.',
+    image: '/testomonials/profile-picture.webp',
+  },
+  {
+    id: '9',
+    name: 'Dr. Seth Dobrin',
+    role: `Globally Recognized Business Leader in Generative Al & Responsible Al | Expert in Al & Generative Al Strategy development | Formerly IBM's First Ever `,
+    company:"Global Chief Al Officer",
+    text: 'Alice (Clare) worked for me for a number of years at Monsanto. During that time she solved a series of longstanding problem that ultimately stemmed from not having a semantic understanding of our data. She built an ontology representing about 1/3 of our business needs, implemented it and laid out a path for maintenance.',
+    image: '/testomonials/profile-picture.webp',
   },
 ];
 
-export const awards = [
+export const awardsData = [
+  // GlaxoSmithKline
   {
-    id: '1',
-    title: 'Semantic Web Pioneer Award',
-    organization: 'W3C',
-    year: '2022',
+    id: 1,
+    company: "GlaxoSmithKline",
+    title: "Innovation Pipeline Award",
+    year: "2020",
+    category: "Innovation",
+    icon: Trophy,
+    description: "Innovation Pipeline Award – 2020",
   },
   {
-    id: '2',
-    title: 'Outstanding Contribution to Data Science',
-    organization: 'IEEE',
-    year: '2020',
+    id: 2,
+    company: "GlaxoSmithKline",
+    title: "Innovation Award Nomination",
+    subtitle: "Logistics Intelligence Platform",
+    year: "2018",
+    category: "Innovation",
+    icon: Award,
+    description:
+      "Innovation Award Nomination - Logistics Intelligence Platform – 2018",
+  },
+  // Amgen Inc.
+  {
+    id: 3,
+    company: "Amgen Inc.",
+    title: "CIO Award",
+    subtitle: "Reference Data Platform",
+    year: "2017",
+    category: "Leadership",
+    icon: Star,
+    description:
+      "CIO Award for work on the Reference Data Platform - Amgen – 2017",
   },
   {
-    id: '3',
-    title: 'Biotechnology Innovation Award',
-    organization: 'National Science Foundation',
-    year: '2018',
+    id: 4,
+    company: "Amgen Inc.",
+    title: "Innovation Award Nomination",
+    subtitle: "Logistics Intelligence Platform",
+    year: "2018",
+    category: "Innovation",
+    icon: Award,
+    description:
+      "Innovation Award Nomination - Logistics Intelligence Platform – 2018",
+  },
+  // Monsanto Co.
+  {
+    id: 5,
+    company: "Monsanto Co.",
+    title: "Associate Science Fellowship",
+    year: "2006",
+    category: "Science",
+    icon: Medal,
+    description: "Monsanto Associate Science Fellowship (2006)",
   },
   {
-    id: '4',
-    title: 'Women in STEM Leadership Award',
-    organization: 'STEM Alliance',
-    year: '2016',
+    id: 6,
+    company: "Monsanto Co.",
+    title: "Extra Mile Award",
+    subtitle: "SOP for Lead Gene Data Integration via GND",
+    year: "2009",
+    category: "Excellence",
+    icon: Zap,
+    description:
+      "Extra mile award for setting up the SOP for lead gene data integration via GND – Gene Network Database (2009)",
+  },
+  {
+    id: 7,
+    company: "Monsanto Co.",
+    title: "Biotech Exchange Program Sabbatical",
+    year: "2008",
+    category: "Development",
+    icon: Sparkles,
+    description: "Selected for the Biotech Exchange Program sabbatical (2008)",
+  },
+  {
+    id: 8,
+    company: "Monsanto Co.",
+    title: "Walk the Extra Mile Award",
+    subtitle: "Yield Gene GENEX",
+    year: "2007",
+    category: "Excellence",
+    icon: Zap,
+    description:
+      "Walk the extra mile award (2007) For working on the yield gene GENEX.",
+  },
+  {
+    id: 9,
+    company: "Monsanto Co.",
+    title: "Rapid Recognition",
+    subtitle: "Nomenclature Committee",
+    year: "2006",
+    category: "Leadership",
+    icon: CheckCircle,
+    description:
+      "Rapid Recognition@ the BSIB function level for the initiative of building a Nomenclature committee across Monsanto (2006).",
+  },
+  {
+    id: 10,
+    company: "Monsanto Co.",
+    title: "Rapid Recognition",
+    subtitle: "TOS & SAR Activities under LEADS from MRC",
+    year: "2005",
+    category: "Innovation",
+    icon: CheckCircle,
+    description:
+      "Rapid recognition for mobilizing the TOS (The Ontology Server) and (SAR SUPER ANNOTATION REPOSITORY) activities under LEADS from MRC (2005)",
+  },
+  {
+    id: 11,
+    company: "Monsanto Co.",
+    title: '"Above and Beyond" Award Nomination',
+    subtitle: "Ontology-based Data Integration System",
+    year: "2004",
+    category: "Innovation",
+    icon: Trophy,
+    description:
+      'Nominated for the "Above and beyond" award under the category of individual\'s contribution to Outstanding Project Implementation in the year 2004 (the nomination was made by colleagues and leaders for conception of the "ontology" based data integration" system, learning the skills, transferring skills and implementing the concept) (2004).',
+  },
+  {
+    id: 12,
+    company: "Monsanto Co.",
+    title: "Rapid Recognition",
+    subtitle: "Host & Facilitator - STL Collaboration",
+    year: "2004",
+    category: "Leadership",
+    icon: CheckCircle,
+    description:
+      "Rapid recognition for playing host and facilitating better links with individuals from STL (2004)",
   },
 ];
 

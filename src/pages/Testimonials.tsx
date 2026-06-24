@@ -1,20 +1,42 @@
 import { motion } from 'framer-motion';
-import { Quote, Star, MessageSquareCode, ArrowUpRight } from 'lucide-react';
+import { Quote, Star, MessageSquareCode, ArrowUpRight, X, Maximize2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import { fadeInUp, staggerContainer } from '../lib/config';
 import { testimonials } from '../lib/data';
 import PageBanner from '../components/PageBanner';
 
 export default function Testimonials() {
+  const [selectedTestimonial, setSelectedTestimonial] = useState<typeof testimonials[0] | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = (testimonial: typeof testimonials[0]) => {
+    setSelectedTestimonial(testimonial);
+    setIsModalOpen(true);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedTestimonial(null);
+    document.body.style.overflow = 'unset';
+  };
+
+  // Truncate text to ~150 characters
+  const truncateText = (text: string, maxLength: number = 150) => {
+    if (text.length <= maxLength) return text;
+    return text.slice(0, maxLength) + '...';
+  };
+
   return (
     <div className="bg-white text-gray-900 selection:bg-[#0c71c3]/30 overflow-hidden">
       
       {/* Premium Hero Header Section */}
-     <PageBanner
-  title="Words from Collaborators"
-  description="Real feedback from industry pioneers, academic leads, and global partners driving technology forward."
-  backgroundImage="https://t3.ftcdn.net/jpg/02/64/30/32/360_F_264303251_zEuPW8uTjTTY2wogztkQHxekcLRUdvXT.jpg"
-/>
+      <PageBanner
+        title="Words from Collaborators"
+        description="Real feedback from industry pioneers, academic leads, and global partners driving technology forward."
+        backgroundImage="/bg.jpg"
+      />
 
       {/* Testimonials Modern Grid */}
       <section className="py-20 bg-gray-50 relative z-10">
@@ -24,14 +46,14 @@ export default function Testimonials() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
-            className="grid md:grid-cols-2 gap-8 items-start"
+            className="grid md:grid-cols-2 gap-8"
           >
             {testimonials.map((testimonial, i) => (
               <motion.div
                 key={testimonial.id}
                 variants={fadeInUp}
                 whileHover={{ y: -6, transition: { duration: 0.3 } }}
-                className={`group relative bg-white rounded-3xl p-8 md:p-10 border border-gray-100 shadow-xl shadow-gray-200/40 hover:shadow-2xl hover:shadow-[#0c71c3]/10 transition-all duration-300 ${
+                className={`group relative bg-white rounded-3xl p-8 md:p-10 border border-gray-100 shadow-xl shadow-gray-200/40 hover:shadow-2xl hover:shadow-[#0c71c3]/10 transition-all duration-300 flex flex-col h-full ${
                   i % 2 === 1 ? 'md:translate-y-12' : ''
                 }`}
               >
@@ -39,63 +61,125 @@ export default function Testimonials() {
                 <div className="absolute inset-x-12 top-0 h-[1px] bg-gradient-to-r from-transparent via-[#0c71c3]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 
                 {/* Icon Placement */}
-                <div className="absolute top-8 right-8 w-10 h-10 rounded-2xl bg-gray-50 border border-gray-100 flex items-center justify-center text-gray-400 group-hover:text-[#0c71c3] group-hover:bg-[#0c71c3]/10 transition-colors duration-300">
+                <div className="absolute top-4 right-2 w-10 h-10 rounded-2xl bg-gray-50 border border-gray-100 flex items-center justify-center text-gray-400 group-hover:text-[#0c71c3] group-hover:bg-[#0c71c3]/10 transition-colors duration-300">
                   <Quote className="w-4 h-4 transform rotate-180" />
                 </div>
-                
-                {/* Rating indicators */}
-                <div className="flex items-center gap-1 mb-6">
-                  {[...Array(5)].map((_, j) => (
-                    <Star key={j} className="w-3.5 h-3.5 text-[#f57507] fill-[#f57507]/10 stroke-[1.5]" />
-                  ))}
+
+                {/* Body Content - Flex grow to fill space */}
+                <div className="flex-1">
+                  <p className="text-gray-700 leading-relaxed font-light text-base md:text-lg tracking-wide">
+                    &ldquo;{truncateText(testimonial.text)}&rdquo;
+                  </p>
+                  
+                  {/* Read More Button */}
+                  {testimonial.text.length > 150 && (
+                    <button
+                      onClick={() => openModal(testimonial)}
+                      className="inline-flex items-center gap-1.5 mt-3 text-[#0c71c3] hover:text-[#0a5fa3] font-medium text-sm transition-colors group/read"
+                    >
+                      <span>Read More</span>
+                      <Maximize2 className="w-3.5 h-3.5 group-hover/read:scale-110 transition-transform" />
+                    </button>
+                  )}
                 </div>
 
-                {/* Body Content */}
-                <p className="text-gray-700 leading-relaxed font-light text-base md:text-lg tracking-wide">
-                  &ldquo;{testimonial.text}&rdquo;
-                </p>
-
-                {/* Author Information Block */}
-                <div className="flex items-center gap-4 mt-8 pt-6 border-t border-gray-100">
-                  <div className="relative">
+                {/* Author Information Block - Fixed at bottom */}
+                <div className="flex items-center gap-4 mt-6 pt-6 border-t border-gray-100 flex-shrink-0">
+                  <div className="relative flex-shrink-0">
                     <img
                       src={testimonial.image}
                       alt={testimonial.name}
                       className="w-12 h-12 rounded-full object-cover border border-gray-200 ring-4 ring-white shadow-sm"
                     />
-                    <div className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-[#0c71c3] border-2 border-white"></div>
                   </div>
-                  <div>
-                    <p className="font-bold text-gray-900 text-sm md:text-base tracking-wide transition-colors group-hover:text-[#0c71c3]">
+                  <div className="min-w-0 flex-1">
+                    <p className="font-bold text-gray-900 text-sm md:text-base tracking-wide transition-colors group-hover:text-[#0c71c3] truncate">
                       {testimonial.name}
                     </p>
-                    <p className="text-gray-500 text-xs font-medium tracking-wide mt-0.5">
+                    <p className="text-gray-500 text-xs font-medium tracking-wide mt-0.5 truncate">
                       {testimonial.role}
                     </p>
+                    {testimonial.company && (
+                      <p className="text-gray-400 text-xs font-medium tracking-wide mt-0.5 truncate">
+                        {testimonial.company}
+                      </p>
+                    )}
                   </div>
                 </div>
               </motion.div>
             ))}
           </motion.div>
-
-          {/* View All Link - Optional */}
-          <motion.div
-            variants={fadeInUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="text-center mt-16"
-          >
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 text-[#0c71c3] hover:text-[#0a5fa3] font-semibold transition-colors group"
-            >
-              <span>Share your experience</span>
-              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-            </Link>
-          </motion.div>
         </div>
       </section>
+
+      {/* Modal/Popup */}
+      {isModalOpen && selectedTestimonial && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+          onClick={closeModal}
+        >
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0, y: 20 }}
+            animate={{ scale: 1, opacity: 1, y: 0 }}
+            exit={{ scale: 0.9, opacity: 0, y: 20 }}
+            transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+            className="relative bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              onClick={closeModal}
+              className="absolute top-4 right-4 z-10 p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors text-gray-600 hover:text-gray-900"
+              aria-label="Close modal"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            {/* Modal Content */}
+            <div className="p-8 md:p-12">
+              {/* Quote Icon */}
+              <div className="w-14 h-14 rounded-2xl bg-[#0c71c3]/10 flex items-center justify-center mb-6">
+                <Quote className="w-7 h-7 text-[#0c71c3] transform rotate-180" />
+              </div>
+
+              {/* Full Testimonial Text */}
+              <p className="text-gray-700 leading-relaxed text-base md:text-lg font-light">
+                &ldquo;{selectedTestimonial.text}&rdquo;
+              </p>
+
+              {/* Divider */}
+              <div className="h-px bg-gray-200 my-8" />
+
+              {/* Author Info - Full width in modal */}
+              <div className="flex items-center gap-4">
+                <div className="relative flex-shrink-0">
+                  <img
+                    src={selectedTestimonial.image}
+                    alt={selectedTestimonial.name}
+                    className="w-14 h-14 rounded-full object-cover border-2 border-[#0c71c3]/30 shadow-md"
+                  />
+                </div>
+                <div>
+                  <p className="font-bold text-gray-900 text-base md:text-lg">
+                    {selectedTestimonial.name}
+                  </p>
+                  <p className="text-gray-500 text-sm font-medium">
+                    {selectedTestimonial.role}
+                  </p>
+                  {selectedTestimonial.company && (
+                    <p className="text-gray-400 text-sm font-medium">
+                      {selectedTestimonial.company}
+                    </p>
+                  )}
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
 
       {/* Modern Light CTA Card Section */}
       <section className="py-28 relative bg-white">
@@ -139,12 +223,6 @@ export default function Testimonials() {
                   <span>Get In Touch</span>
                   <ArrowUpRight className="w-4 h-4 stroke-[2.5] group-hover:rotate-45 transition-transform" />
                 </Link>
-                {/* <Link
-                  to="/projects"
-                  className="group inline-flex items-center gap-2.5 px-8 py-4 bg-transparent hover:bg-[#0c71c3]/5 text-gray-700 font-semibold text-sm rounded-full border border-gray-200 hover:border-[#0c71c3]/30 transition-all duration-300"
-                >
-                  <span>View My Work</span>
-                </Link> */}
               </motion.div>
             </motion.div>
 

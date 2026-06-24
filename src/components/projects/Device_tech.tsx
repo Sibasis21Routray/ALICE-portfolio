@@ -93,7 +93,7 @@ export default function DeviceTech() {
       <PageBanner
         title="Advanced Device Technology"
         description="Knowledge Sharing Platform for Device Technology Workers"
-        backgroundImage="https://t3.ftcdn.net/jpg/02/64/30/32/360_F_264303251_zEuPW8uTjTTY2wogztkQHxekcLRUdvXT.jpg"
+        backgroundImage="/bg.jpg"
       />
 
       {/* Overview Section with Large Image */}
@@ -108,7 +108,7 @@ export default function DeviceTech() {
             className="mb-12"
           >
             <img
-              src="https://aliceclaraaugustine.com/wp-content/uploads/2023/08/advanced-devices.png"
+              src="/projects/advanced-devices.png"
               alt="Advanced Device Technology Platform"
               className="rounded-2xl shadow-xl w-full h-auto border border-gray-200"
             />

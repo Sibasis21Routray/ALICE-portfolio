@@ -93,7 +93,7 @@ export default function HappyBar() {
       <PageBanner
         title="Happy Bar Non-Profit & Product Development"
         description="Promoting health for the mind, body and spirit through nutritional snacks and awareness"
-        backgroundImage="https://t3.ftcdn.net/jpg/02/64/30/32/360_F_264303251_zEuPW8uTjTTY2wogztkQHxekcLRUdvXT.jpg"
+        backgroundImage="/bg.jpg"
       />
 
       {/* Section 1: Mission - Image Left, Text Right */}
@@ -132,7 +132,7 @@ export default function HappyBar() {
               className="order-1 md:order-2"
             >
               <img
-                src="https://thehappyfoodcompany.com/images/cashew-raisin.png"
+                src="/projects/cashew-raisin.png"
                 alt="Happy Bar Mission"
                 className="rounded-2xl  w-full h-[250px] object-cover"
               />
@@ -152,7 +152,7 @@ export default function HappyBar() {
               viewport={{ once: true }}
             >
               <img
-                src="https://thehappyfoodcompany.com/images/date-almond-cranberry.png"
+                src="/projects/date-almond-cranberry.png"
                 alt="Happy Bar Vision"
                 className="rounded-2xl  w-full h-[350px] object-cover"
               />

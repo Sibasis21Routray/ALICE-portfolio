@@ -4,9 +4,7 @@ import Awards from '../components/about/Awards';
 import PatentAndPublications from '../components/about/PatentAndPublications';
 import PageBanner from '../components/PageBanner';
 import { motion } from 'framer-motion';
-import { fadeInUp, staggerContainer, slideInLeft } from '../lib/config';
-import { ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { fadeInUp, staggerContainer } from '../lib/config';
 
 export default function About() {
   return (
@@ -15,7 +13,7 @@ export default function About() {
       <PageBanner
         title="About Me"
         description="Biotechnologist, Ontologist & Philanthropist"
-        backgroundImage="https://t3.ftcdn.net/jpg/02/64/30/32/360_F_264303251_zEuPW8uTjTTY2wogztkQHxekcLRUdvXT.jpg"
+        backgroundImage="/bg.jpg"
       />
       
       {/* Experience Section with ID */}

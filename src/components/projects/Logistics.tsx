@@ -86,7 +86,7 @@ export default function Logistics() {
       <PageBanner
         title="Logistics Intelligence Platform"
         description="On-Demand Supply Chain Data & Analytics"
-        backgroundImage="https://t3.ftcdn.net/jpg/02/64/30/32/360_F_264303251_zEuPW8uTjTTY2wogztkQHxekcLRUdvXT.jpg"
+        backgroundImage="/bg.jpg"
       />
 
       {/* Overview Section with Large Image */}
@@ -101,7 +101,7 @@ export default function Logistics() {
             className="mb-12"
           >
             <img
-              src="https://aliceclaraaugustine.com/wp-content/uploads/2023/08/logi-pic.png"
+              src="/projects/logi-pic.png"
               alt="Logistics Intelligence Platform Architecture"
               className="rounded-2xl shadow-xl w-full h-auto border border-gray-200"
             />

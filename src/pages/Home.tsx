@@ -13,7 +13,7 @@ import {
   MapPin,
 } from "lucide-react";
 import { fadeInUp, staggerContainer, slideInLeft } from "../lib/config";
-import { experience, projects, testimonials } from "../lib/data";
+import { experience, testimonials } from "../lib/data";
 import AnimatedCounter from "../components/AnimatedCounter";
 import HeroSection from "../components/home/hero";
 
@@ -58,7 +58,7 @@ export default function Home() {
 
               <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl shadow-gray-300/50 bg-white p-3 rotate-[-2deg] hover:rotate-0 transition-transform duration-500 ease-out">
                 <img
-                  src="https://aliceclaraaugustine.com/wp-content/uploads/2023/08/ACA-1.png"
+                  src="/home/ACA-1.png"
                   alt="About Alice"
                   className="w-full h-[500px] object-cover rounded-[2rem]"
                 />

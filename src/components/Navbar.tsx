@@ -142,7 +142,7 @@ export default function Navbar() {
           <Link to="/" className="flex items-center gap-2 group flex-shrink-0">
             <div className="relative">
               <img
-                src="https://aliceclaraaugustine.com/wp-content/uploads/2023/08/aca-new-logo.png"
+                src="/logo.png"
                 alt="Happy Food Logo"
                 className="w-36 sm:w-44 h-auto rounded-lg object-cover py-3"
               />

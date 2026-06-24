@@ -32,7 +32,7 @@ export default function HeroSection() {
       {/* Background Image with responsive positioning */}
       <div className="absolute inset-0 z-0">
         <img
-          src="https://aliceclaraaugustine.com/wp-content/uploads/2023/08/ACA-hero-jpg.webp"
+          src="/home/ACA-hero-jpg.webp"
           alt="Background"
           className="w-full h-full object-cover object-center md:object-[70%_center] lg:object-[60%_center] xl:object-[55%_center]"
         />

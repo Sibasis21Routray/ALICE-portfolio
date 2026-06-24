@@ -87,7 +87,7 @@ export default function KnowledgeSharing() {
       <PageBanner
         title="Quality Management System (QMS)"
         description="Knowledge Sharing Platform"
-        backgroundImage="https://t3.ftcdn.net/jpg/02/64/30/32/360_F_264303251_zEuPW8uTjTTY2wogztkQHxekcLRUdvXT.jpg"
+        backgroundImage="/bg.jpg"
       />
 
       {/* Overview Section with Large Image */}
@@ -102,7 +102,7 @@ export default function KnowledgeSharing() {
             className="mb-12"
           >
             <img
-              src="https://aliceclaraaugustine.com/wp-content/uploads/2023/08/knowledge-sharing.png"
+              src="/projects/knowledge-sharing.png"
               alt="QMS Knowledge Sharing Platform"
               className="rounded-2xl shadow-xl w-full h-auto border border-gray-200"
             />

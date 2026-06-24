@@ -34,7 +34,7 @@ export default function Contact() {
        <PageBanner
         title="Contact Me"
         description="Have a question or want to collaborate? I&apos;d love to hear from you."
-        backgroundImage="https://t3.ftcdn.net/jpg/02/64/30/32/360_F_264303251_zEuPW8uTjTTY2wogztkQHxekcLRUdvXT.jpg"
+        backgroundImage="/bg.jpg"
       />
 
       {/* Contact Section */}

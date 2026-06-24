@@ -1,6 +1,6 @@
-import React from 'react';
-import { motion, Variants } from 'framer-motion';
 
+import { motion, Variants } from 'framer-motion';
+import {educationData} from "../../lib/data"
 // Animation variants
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 15 },
@@ -38,76 +38,7 @@ interface EducationItem {
   highlights?: string[];
 }
 
-const educationData: EducationItem[] = [
-  {
-    id: 1,
-    institution: 'UCLA Extension',
-    logo: 'https://aliceclaraaugustine.com/wp-content/uploads/2023/08/ucla.png',
-    subtitle: 'IN COLLABORATION WITH EDX',
-    program: 'The Product Management Boot Camp at UCLA',
-    period: 'April 2023 – August 2023',
-    description: [
-      "The most recent bootcamp study I did on Product management has given me a formal education on the product's lifecycle: from development, to positioning and pricing, by focusing on the product and its customers first and foremost.",
-      'I have gained crucial product management skills like market analysis, ideation, value proposition creation, prioritization, roadmap development, rapid prototyping using Figjam, data analysis using SQL, and data visualization using Tableau.'
-    ]
-  },
-  {
-    id: 2,
-    institution: 'USF Health',
-    logo: 'https://aliceclaraaugustine.com/wp-content/uploads/2023/08/usf-jpeg.webp',
-    subtitle: 'MORSANI COLLEGE OF MEDICINE',
-    program: 'Masters in Healthcare Informatics',
-    period: '2020 – 2021',
-    description: [
-      'The masters course in Healthcare analytics focused on the management and use of healthcare data. It included study of the design, development, adoption and application of information technology-based innovations in healthcare services delivery, management, and planning.',
-      'I had hands-on training to develop skills around data dashboards, data mining, Predictive analytics, data preparation, data visualization, descriptive statistics, healthcare data, predictive analytics, SAS Studio, SAS Visual Analytics and SAS Viya.'
-    ]
-  },
-  {
-    id: 3,
-    institution: 'MIT',
-    logo: 'https://aliceclaraaugustine.com/wp-content/uploads/2023/08/mit-mgmt.png',
-    subtitle: 'MANAGEMENT EXECUTIVE EDUCATION',
-    program: 'Design Thinking - Innovation of Products and Services',
-    period: 'Feb 2018 – April 2018',
-    description: [
-      "Innovation of Products and Services: MIT's Approach to Design Thinking"
-    ],
-    highlights: [
-      'Customer Insights',
-      'Interviewing Techniques',
-      'Brainstorming Techniques',
-      'Human-Centered Design',
-      'Ideation Techniques',
-      'Rapid Prototyping'
-    ]
-  },
-  {
-    id: 4,
-    institution: 'St. Aloysius College',
-    logo: 'https://aliceclaraaugustine.com/wp-content/uploads/2023/08/st-aloysius-1.png',
-    subtitle: 'DOCTORATE STUDIES IN BIO-SCIENCES',
-    program: 'Ph.D. in Bio-Sciences',
-    period: '1992 – 1998',
-    description: [
-      'Ph.D. studies included Laboratory related techniques such as Plant tissue culture, genetic transformation, synthetic seed production, cryopreservation of somatic embryos, microphotography, micro-techniques and staining methods, experimental design, documentation, statistical analysis and report generation.',
-      'I presented at several conferences, domestic and international and met students and teachers in Jerusalem and across Europe.'
-    ]
-  },
-  {
-    id: 5,
-    institution: 'St. Joseph\'s College',
-    logo: 'https://aliceclaraaugustine.com/wp-content/uploads/2023/08/St.Josephs-logo.png',
-    subtitle: 'DEPARTMENT OF BOTANY',
-    program: 'Masters in Botany (Specialization in Microbiology)',
-    period: '1990 – 1992',
-    description: [
-      'Masters studies included laboratory related techniques such as microphotography, micro-techniques and staining methods, experimental design, documentation, statistical analysis and report generation.',
-      'Courses involved various areas of research like Advanced Plant Physiology, Plant Tissue Culture, Plant Systematics and Microbiology.',
-      'I was encouraged to take up various research topics of my interest and present my work in National conferences.'
-    ]
-  }
-];
+
 
 export default function Education() {
   return (

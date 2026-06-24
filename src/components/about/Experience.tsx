@@ -64,7 +64,7 @@ export default function Experience({}: ExperiencePageProps) {
         <span className="relative inline-block">
           <span className="absolute -inset-2 bg-gradient-to-r from-[#0c71c3] to-[#f57507] blur-3xl opacity-20 rounded-xl" />
           <span className="relative text-transparent bg-clip-text bg-gradient-to-r from-[#0c71c3] via-[#0c71c3] to-[#f57507]">
-            Experiencs
+            Experience
           </span>
         </span>
       </motion.h2>
