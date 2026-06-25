@@ -33,7 +33,7 @@ export default function Contact() {
     setLoading(true);
     try {
       const apiUrl = import.meta.env.VITE_API_BASE_URL;
-      await axios.post(`${apiUrl}/contact`, {
+      await axios.post(`${apiUrl}/api/contact`, {
         ...formState,
         turnstileToken,
       });
