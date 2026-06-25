@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Phone, Send, Linkedin, CheckCircle } from 'lucide-react';
+import { Mail, MapPin, Phone, Send, Linkedin, CheckCircle, Loader2, AlertCircle } from 'lucide-react';
+import { Turnstile, TurnstileInstance } from '@marsidev/react-turnstile';
+import axios from 'axios';
 import { fadeInUp, staggerContainer, slideInLeft, slideInRight } from '../lib/config';
 import { siteConfig } from '../lib/config';
 import SectionHeader from '../components/SectionHeader';
@@ -14,14 +16,46 @@ export default function Contact() {
     message: '',
   });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [turnstileToken, setTurnstileToken] = useState('');
+  const turnstileRef = useRef<TurnstileInstance>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
+    setError('');
+
+    if (!turnstileToken) {
+      setError('Please complete the CAPTCHA check.');
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const apiUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+      await axios.post(`${apiUrl}/api/contact`, {
+        ...formState,
+        turnstileToken,
+      });
+
+      setSubmitted(true);
       setFormState({ name: '', email: '', subject: '', message: '' });
-    }, 3000);
+      setTurnstileToken('');
+      if (turnstileRef.current) {
+        turnstileRef.current.reset();
+      }
+      setTimeout(() => {
+        setSubmitted(false);
+      }, 5000);
+    } catch (err: any) {
+      setError(err.response?.data?.error || 'An error occurred while sending your message. Please try again.');
+      if (turnstileRef.current) {
+        turnstileRef.current.reset();
+      }
+      setTurnstileToken('');
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -215,12 +249,33 @@ export default function Contact() {
                       />
                     </div>
 
+                    {error && (
+                      <div className="flex items-center gap-2 text-red-500 text-sm">
+                        <AlertCircle className="w-4 h-4" />
+                        <span>{error}</span>
+                      </div>
+                    )}
+
+                    <div className="flex justify-center my-4 overflow-hidden rounded-lg">
+                      <Turnstile
+                        siteKey={import.meta.env.VITE_TURNSTILE_SITE_KEY || ''} 
+                        onSuccess={(token) => setTurnstileToken(token)}
+                        onError={() => setError('CAPTCHA verification failed. Please try again.')}
+                        ref={turnstileRef}
+                      />
+                    </div>
+
                     <button
                       type="submit"
-                      className="w-full flex items-center justify-center gap-2 px-4 sm:px-6 py-3 sm:py-4 bg-[#0c71c3] hover:bg-[#0a5fa3] text-white font-semibold text-sm sm:text-base rounded-lg transition-all duration-300 shadow-lg shadow-[#0c71c3]/30 hover:shadow-[#0c71c3]/50 hover:-translate-y-0.5"
+                      disabled={loading}
+                      className="w-full flex items-center justify-center gap-2 px-4 sm:px-6 py-3 sm:py-4 bg-[#0c71c3] hover:bg-[#0a5fa3] text-white font-semibold text-sm sm:text-base rounded-lg transition-all duration-300 shadow-lg shadow-[#0c71c3]/30 hover:shadow-[#0c71c3]/50 hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:-translate-y-0"
                     >
-                      <Send className="w-4 h-4" />
-                      Send Message
+                      {loading ? (
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                      ) : (
+                        <Send className="w-4 h-4" />
+                      )}
+                      {loading ? 'Sending...' : 'Send Message'}
                     </button>
 
                     <p className="text-center text-xs text-gray-400">

@@ -83,7 +83,7 @@ export const designConfig = {
 export const siteConfig = {
   name: 'Alice Clara Augustine',
   tagline: 'Biotechnologist, Ontologist & Philanthropist',
-  email: 'contact@aliceclaraaugustine.com',
+  email: 'acaugu@gmail.com',
   social: {
     linkedin: 'https://linkedin.com',
     github: 'https://github.com',
