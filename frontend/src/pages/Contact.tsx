@@ -101,7 +101,7 @@ export default function Contact() {
                   <div className="min-w-0 flex-1">
                     <h4 className="font-semibold text-gray-900 text-sm sm:text-base">Email</h4>
                     <a
-                      // href={`mailto:${siteConfig.email}`}
+                      href={`mailto:${siteConfig.email}`}
                       className="text-[#0c71c3] hover:text-[#0a5fa3] transition-colors text-sm sm:text-base break-all"
                     >
                       {siteConfig.email}
@@ -116,7 +116,7 @@ export default function Contact() {
                   <div>
                     <h4 className="font-semibold text-gray-900 text-sm sm:text-base">LinkedIn</h4>
                     <a
-                      // href={siteConfig.social.linkedin}
+                      href={siteConfig.social.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-[#0c71c3] hover:text-[#0a5fa3] transition-colors text-sm sm:text-base"

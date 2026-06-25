@@ -85,7 +85,7 @@ export const siteConfig = {
   tagline: 'Biotechnologist, Ontologist & Philanthropist',
   email: 'acaugu@gmail.com',
   social: {
-    linkedin: 'https://linkedin.com',
+    linkedin: 'https://www.linkedin.com/in/aliceclareaugustine',
     github: 'https://github.com',
   },
 };
