@@ -32,7 +32,7 @@ export default function Contact() {
 
     setLoading(true);
     try {
-      const apiUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+      const apiUrl = import.meta.env.VITE_API_BASE_URL;
       await axios.post(`${apiUrl}/api/contact`, {
         ...formState,
         turnstileToken,
@@ -249,14 +249,9 @@ export default function Contact() {
                       />
                     </div>
 
-                    {error && (
-                      <div className="flex items-center gap-2 text-red-500 text-sm">
-                        <AlertCircle className="w-4 h-4" />
-                        <span>{error}</span>
-                      </div>
-                    )}
+                    
 
-                    <div className="flex justify-center my-4 overflow-hidden rounded-lg">
+                    <div className="flex justify-left my-4 overflow-hidden rounded-lg">
                       <Turnstile
                         siteKey={import.meta.env.VITE_TURNSTILE_SITE_KEY || ''} 
                         onSuccess={(token) => setTurnstileToken(token)}
@@ -264,6 +259,12 @@ export default function Contact() {
                         ref={turnstileRef}
                       />
                     </div>
+                    {error && (
+                      <div className="flex items-center gap-2 text-red-500 text-sm">
+                        <AlertCircle className="w-4 h-4" />
+                        <span>{error}</span>
+                      </div>
+                    )}
 
                     <button
                       type="submit"
