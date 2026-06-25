@@ -14,6 +14,53 @@ import {
 
 import {awardsData} from "../../lib/data"
 
+function HeadingBubbles({ tone = 'blue' }: { tone?: 'blue' | 'orange' }) {
+  // Ambient floating bubbles for section headings. Two tones so different
+  // section headings can read as related without looking identical.
+  const palette =
+    tone === 'blue'
+      ? ['rgba(12,113,195,0.32)', 'rgba(56,189,248,0.26)', 'rgba(12,113,195,0.16)']
+      : ['rgba(245,117,7,0.32)', 'rgba(12,113,195,0.2)', 'rgba(245,117,7,0.16)'];
+
+  const bubbles = [
+    { size: 26, top: '8%',  left: '4%',  dur: 7.5, delay: 0 },
+    { size: 19, top: '70%', left: '0%',  dur: 6,   delay: 0.5 },
+    { size: 32, top: '55%', left: '10%', dur: 9,   delay: 1.1 },
+    { size: 21, top: '15%', left: '88%', dur: 6.5, delay: 0.3 },
+    { size: 28, top: '68%', left: '93%', dur: 8,   delay: 0.8 },
+    { size: 18, top: '40%', left: '97%', dur: 5.5, delay: 1.4 },
+  ];
+
+  return (
+    <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-visible">
+      {bubbles.map((b, i) => (
+        <motion.span
+          key={i}
+          className="absolute rounded-full"
+          style={{
+            width: b.size,
+            height: b.size,
+            top: b.top,
+            left: b.left,
+            background: palette[i % palette.length],
+          }}
+          animate={{
+            y: [0, -14, 0],
+            x: [0, i % 2 === 0 ? 5 : -5, 0],
+            opacity: [0.35, 0.85, 0.35],
+          }}
+          transition={{
+            duration: b.dur,
+            delay: b.delay,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
 // Get unique companies for tabs
 const brandTabs = [
   "All",
@@ -73,29 +120,29 @@ export default function Awards() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mt-10 "
+          className="relative text-center mt-10 "
         >
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1, duration: 0.6 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 mt-2 leading-tight"
-          >
-            <span className="relative inline-block">
-              <span className="absolute -inset-2 bg-gradient-to-r from-[#0c71c3] to-[#f57507] blur-3xl opacity-20 rounded-xl" />
+          <div className="relative inline-block min-w-[280px] sm:min-w-[360px] px-6 z-0">
+            <HeadingBubbles tone="blue" />
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1, duration: 0.6 }}
+              className="relative z-10 text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 mt-2 leading-tight"
+            >
               <span className="relative text-transparent bg-clip-text bg-gradient-to-r from-[#0c71c3] via-[#0c71c3] to-[#f57507]">
                 Awards
               </span>
-            </span>
-          </motion.h2>
+            </motion.h2>
+          </div>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="text-gray-500 max-w-2xl mx-auto mt-2 text-sm sm:text-base"
+            className="relative z-10 text-gray-500 max-w-2xl mx-auto mt-2 text-sm sm:text-base"
           >
             My Awards & Recognition
           </motion.p>

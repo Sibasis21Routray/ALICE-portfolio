@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { 
   Heart, 
   Target, 
@@ -97,6 +97,117 @@ const productPrinciples = [
   'Fund-raising',
   'Website design requirements'
 ];
+
+function HeadingBubbles({ tone = 'blue' }: { tone?: 'blue' | 'orange' }) {
+  // Ambient floating bubbles for section headings. Two tones so different
+  // section headings can read as related without looking identical.
+  const palette =
+    tone === 'blue'
+      ? ['rgba(12,113,195,0.32)', 'rgba(56,189,248,0.26)', 'rgba(12,113,195,0.16)']
+      : ['rgba(245,117,7,0.32)', 'rgba(12,113,195,0.2)', 'rgba(245,117,7,0.16)'];
+
+  const bubbles = [
+    { size: 26, top: '8%',  left: '4%',  dur: 7.5, delay: 0 },
+    { size: 19, top: '70%', left: '0%',  dur: 6,   delay: 0.5 },
+    { size: 32, top: '55%', left: '10%', dur: 9,   delay: 1.1 },
+    { size: 21, top: '15%', left: '88%', dur: 6.5, delay: 0.3 },
+    { size: 28, top: '68%', left: '93%', dur: 8,   delay: 0.8 },
+    { size: 18, top: '40%', left: '97%', dur: 5.5, delay: 1.4 },
+  ];
+
+  return (
+    <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-visible">
+      {bubbles.map((b, i) => (
+        <motion.span
+          key={i}
+          className="absolute rounded-full"
+          style={{
+            width: b.size,
+            height: b.size,
+            top: b.top,
+            left: b.left,
+            background: palette[i % palette.length],
+          }}
+          animate={{
+            y: [0, -14, 0],
+            x: [0, i % 2 === 0 ? 5 : -5, 0],
+            opacity: [0.35, 0.85, 0.35],
+          }}
+          transition={{
+            duration: b.dur,
+            delay: b.delay,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
+function MagneticButton({
+  as: Component,
+  className,
+  glowColor = "rgba(12,113,195,0.5)",
+  children,
+  ...rest
+}: {
+  as: any;
+  className?: string;
+  glowColor?: string;
+  children: React.ReactNode;
+  [key: string]: any;
+}) {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const springX = useSpring(x, { stiffness: 200, damping: 18, mass: 0.3 });
+  const springY = useSpring(y, { stiffness: 200, damping: 18, mass: 0.3 });
+  const glowX = useMotionValue(50);
+  const glowY = useMotionValue(50);
+  const glowOpacity = useMotionValue(0);
+
+  const handleMove = (e: React.MouseEvent<HTMLElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const px = e.clientX - rect.left;
+    const py = e.clientY - rect.top;
+    x.set((px / rect.width - 0.5) * 10);
+    y.set((py / rect.height - 0.5) * 10);
+    glowX.set((px / rect.width) * 100);
+    glowY.set((py / rect.height) * 100);
+  };
+
+  const handleEnter = () => glowOpacity.set(1);
+  const handleLeave = () => {
+    x.set(0);
+    y.set(0);
+    glowOpacity.set(0);
+  };
+
+  const glowBackground = useTransform(
+    [glowX, glowY],
+    ([gx, gy]: number[]) => `radial-gradient(circle at ${gx}% ${gy}%, ${glowColor}, transparent 70%)`
+  );
+
+  const MotionComponent = motion(Component);
+
+  return (
+    <MotionComponent
+      {...rest}
+      onMouseMove={handleMove}
+      onMouseEnter={handleEnter}
+      onMouseLeave={handleLeave}
+      style={{ x: springX, y: springY, position: "relative" }}
+      className={className}
+    >
+      <motion.span
+        aria-hidden="true"
+        style={{ background: glowBackground, opacity: glowOpacity }}
+        className="pointer-events-none absolute -inset-2 rounded-full blur-lg transition-opacity"
+      />
+      <span className="relative z-10 inline-flex items-center gap-2">{children}</span>
+    </MotionComponent>
+  );
+}
 
 export default function HappyBar() {
   return (
@@ -351,9 +462,10 @@ export default function HappyBar() {
               </motion.div>
               <motion.h2 
                 variants={fadeInUp}
-                className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900"
+                className="relative inline-block text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900"
               >
-                Product Management Principles Used
+                <HeadingBubbles tone="blue" />
+                <span className="relative z-10">Product Management Principles Used</span>
               </motion.h2>
               <motion.p 
                 variants={fadeInUp}
@@ -393,41 +505,15 @@ export default function HappyBar() {
               variants={fadeInUp}
               className='flex justify-center mt-8 sm:mt-10'
             >
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ duration: 0.2 }}
+              <MagneticButton
+                as={Link}
+                to="/projects/happybar"
+                glowColor="rgba(12,113,195,0.5)"
+                className="group inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 bg-[#0c71c3] hover:bg-[#0a5fa3] text-white text-sm sm:text-base rounded-full font-semibold hover:-translate-y-0.5 transition-all duration-300 shadow-lg shadow-[#0c71c3]/30 hover:shadow-[#0c71c3]/50"
               >
-                <Link
-                  to="/projects/happybar"
-                  className="inline-flex items-center px-5 sm:px-6 py-2.5 sm:py-3 bg-[#0c71c3] text-white text-sm sm:text-base rounded-full font-semibold hover:bg-[#0a5fa3] hover:-translate-y-0.5 transition-all duration-300 shadow-lg"
-                >
-                  <motion.span
-                    animate={{ 
-                      x: [0, 5, 0],
-                      transition: { 
-                        duration: 2, 
-                        repeat: Infinity, 
-                        ease: "easeInOut" 
-                      }
-                    }}
-                  >
-                    Click for more information
-                  </motion.span>
-                  <motion.div
-                    animate={{ 
-                      x: [0, 3, 0],
-                      transition: { 
-                        duration: 1.5, 
-                        repeat: Infinity, 
-                        ease: "easeInOut" 
-                      }
-                    }}
-                  >
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </motion.div>
-                </Link>
-              </motion.div>
+                Click for more information
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </MagneticButton>
             </motion.div>
           </motion.div>
         </div>

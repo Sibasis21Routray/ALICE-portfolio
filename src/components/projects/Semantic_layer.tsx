@@ -136,8 +136,56 @@ const businessProcesses = [
   'Hit to Lead, Lead Optimization',
   'Product Development',
   'Clinical Study',
-  'Regulatory/Patent'
+  'Regulatory/Patent',
+  'Commercial'
 ];
+
+function HeadingBubbles({ tone = 'blue' }: { tone?: 'blue' | 'orange' }) {
+  // Ambient floating bubbles for section headings. Two tones so different
+  // section headings can read as related without looking identical.
+  const palette =
+    tone === 'blue'
+      ? ['rgba(12,113,195,0.32)', 'rgba(56,189,248,0.26)', 'rgba(12,113,195,0.16)']
+      : ['rgba(245,117,7,0.32)', 'rgba(12,113,195,0.2)', 'rgba(245,117,7,0.16)'];
+
+  const bubbles = [
+    { size: 26, top: '8%',  left: '4%',  dur: 7.5, delay: 0 },
+    { size: 19, top: '70%', left: '0%',  dur: 6,   delay: 0.5 },
+    { size: 32, top: '55%', left: '10%', dur: 9,   delay: 1.1 },
+    { size: 21, top: '15%', left: '88%', dur: 6.5, delay: 0.3 },
+    { size: 28, top: '68%', left: '93%', dur: 8,   delay: 0.8 },
+    { size: 18, top: '40%', left: '97%', dur: 5.5, delay: 1.4 },
+  ];
+
+  return (
+    <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-visible">
+      {bubbles.map((b, i) => (
+        <motion.span
+          key={i}
+          className="absolute rounded-full"
+          style={{
+            width: b.size,
+            height: b.size,
+            top: b.top,
+            left: b.left,
+            background: palette[i % palette.length],
+          }}
+          animate={{
+            y: [0, -14, 0],
+            x: [0, i % 2 === 0 ? 5 : -5, 0],
+            opacity: [0.35, 0.85, 0.35],
+          }}
+          transition={{
+            duration: b.dur,
+            delay: b.delay,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        />
+      ))}
+    </div>
+  );
+}
 
 export default function SemanticLayer() {
   return (
@@ -315,8 +363,9 @@ export default function SemanticLayer() {
                 </motion.div>
                 <span className="text-[#0c71c3] font-semibold text-xs sm:text-sm uppercase tracking-wider">Architecture</span>
               </div>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">
-                Semantic Layer Architecture
+              <h2 className="relative inline-block text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">
+                <HeadingBubbles tone="blue" />
+                <span className="relative z-10">Semantic Layer Architecture</span>
               </h2>
               <p className="text-gray-500 mt-2 max-w-2xl mx-auto text-sm sm:text-base">
                 A layered approach to knowledge management and data integration
@@ -388,8 +437,9 @@ export default function SemanticLayer() {
                 </motion.div>
                 <span className="text-[#0c71c3] font-semibold text-xs sm:text-sm uppercase tracking-wider">Process</span>
               </div>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">
-                Business Process
+              <h2 className="relative inline-block text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">
+                <HeadingBubbles tone="orange" />
+                <span className="relative z-10">Business Process</span>
               </h2>
               <p className="text-gray-500 mt-2 max-w-2xl mx-auto text-sm sm:text-base">
                 End-to-end workflows enabled by semantic technology
@@ -460,8 +510,9 @@ export default function SemanticLayer() {
                 </motion.div>
                 <span className="text-[#0c71c3] font-semibold text-xs sm:text-sm uppercase tracking-wider">Methodology</span>
               </div>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">
-                Product Management Principles Used
+              <h2 className="relative inline-block text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">
+                <HeadingBubbles tone="blue" />
+                <span className="relative z-10">Product Management Principles Used</span>
               </h2>
               <p className="text-gray-500 mt-2 max-w-2xl mx-auto text-sm sm:text-base">
                 A comprehensive approach to product development and delivery

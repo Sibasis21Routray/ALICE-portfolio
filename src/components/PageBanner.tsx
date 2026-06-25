@@ -14,7 +14,6 @@ export default function PageBanner({
 }: PageBannerProps) {
   return (
     <section className="relative pt-32 pb-16 overflow-hidden">
-      
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
@@ -24,8 +23,11 @@ export default function PageBanner({
         />
       </div>
 
-      {/* Overlay */}
-      {/* <div className="absolute inset-0 bg-[#0c71c3]/70" /> */}
+      {/* Smooth moving diagonal gradient overlay */}
+      <div className="absolute -inset-[10%] mix-blend-multiply animate-stripe-flow blur-2xl" />
+
+      {/* Soft dark base for legibility */}
+      <div className="absolute inset-0 bg-black/25" />
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

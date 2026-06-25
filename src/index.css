@@ -42,3 +42,28 @@
     overflow: hidden;
   }
 }
+
+@keyframes stripe-flow {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 200% 0%;
+  }
+}
+
+.animate-stripe-flow {
+  background: linear-gradient(
+    115deg,
+    #0a3d63 0%,
+    #0c71c3 22%,
+    #5aa8dd 38%,
+    #0c71c3 55%,
+    #0a3d63 70%,
+    #0c71c3 88%,
+    #0a3d63 100%
+  );
+  background-size: 200% 100%;
+  animation: stripe-flow 14s linear infinite;
+  will-change: background-position;
+}
