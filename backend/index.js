@@ -6,7 +6,10 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors());
+app.use(cors({
+  origin: process.env.FRONTEND_URL || '*',
+  methods: ['POST'],
+}));
 app.use(express.json());
 
 app.post('/api/contact', async (req, res) => {
@@ -31,17 +34,23 @@ app.post('/api/contact', async (req, res) => {
       return res.status(400).json({ error: 'CAPTCHA verification failed' });
     }
 
-    // 2. Send email via Brevo
-    const brevoData = {
-      sender: { name, email },
-      to: [
-        {
-          email: process.env.RECEIVER_EMAIL, // Your email address where you want to receive messages
-          name: 'Portfolio Owner',
-        },
-      ],
+    // 2. Send email via Brevo SMTP using Nodemailer
+    const nodemailer = require('nodemailer');
+    const transporter = nodemailer.createTransport({
+      host: 'smtp-relay.brevo.com',
+      port: 587,
+      auth: {
+        user: process.env.BREVO_SMTP_LOGIN,
+        pass: process.env.BREVO_SMTP_KEY,
+      },
+    });
+
+    await transporter.sendMail({
+      from: `"Portfolio Contact Form" <${process.env.BREVO_SENDER_EMAIL}>`,
+      replyTo: `"${name}" <${email}>`,
+      to: process.env.RECEIVER_EMAIL,
       subject: `Portfolio Contact: ${subject || 'New Message'}`,
-      htmlContent: `
+      html: `
         <h3>New Contact Message</h3>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
@@ -49,19 +58,7 @@ app.post('/api/contact', async (req, res) => {
         <p><strong>Message:</strong></p>
         <p>${message}</p>
       `,
-    };
-
-    const brevoResponse = await axios.post(
-      'https://api.brevo.com/v3/smtp/email',
-      brevoData,
-      {
-        headers: {
-          'api-key': process.env.BREVO_API_KEY,
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-      }
-    );
+    });
 
     res.status(200).json({ success: true, message: 'Message sent successfully' });
   } catch (error) {
